@@ -1,0 +1,206 @@
+{
+  "hero": {
+    "name": "Santiago Cardona",
+    "role": "Full Stack Developer",
+    "summary": "Full Stack Developer with experience building end-to-end digital solutions, contributing to both technical development and continuous product improvement. Adaptable to different environments and technologies, focused on delivering results with a strong learning mindset.",
+    "contact": {
+      "email": "sanitgo101@gmail.com",
+      "phone": "+57 300 229 5954",
+      "linkedin": "https://linkedin.com/w184u"
+    }
+  },
+
+  "about": {
+    "paragraphs": [
+      "Full Stack Developer experienced in building scalable and maintainable software solutions across frontend and backend.",
+      "Strong ability to adapt to new technologies and environments, contributing to product improvement and delivery efficiency.",
+      "Focused on continuous learning and working effectively in dynamic, fast-paced teams."
+    ]
+  },
+
+  "skills": {
+    "frontend": [
+      "React",
+      "Redux",
+      "Vite",
+      "Material UI"
+    ],
+    "backend": [
+      ".NET",
+      "Entity Framework Core",
+      "Express.js",
+      "Java Spring Boot"
+    ],
+    "devops": [
+      "Docker",
+      "RedHat OpenShift",
+      "Azure DevOps",
+      "Terraform"
+    ],
+    "databases": [
+      "Microsoft SQL Server",
+      "MySQL",
+      "MongoDB",
+      "Firebase"
+    ],
+    "tools": [
+      "SonarQube",
+      "PowerBI",
+      "Python Automation",
+      "Excel VBA"
+    ],
+    "other": [
+      "Scrum Foundation Professional Certified",
+      "Azure AI Foundry"
+    ]
+  },
+
+  "experience": [
+    {
+      "company": "Celerik Inc",
+      "role": "Full Stack Developer",
+      "period": "Aug 2024 - Apr 2026",
+      "responsibilities": [
+        "Developed and maintained RESTful APIs using .NET 7 and Entity Framework Core.",
+        "Designed layered architecture using Repository and Service patterns with SQL Server.",
+        "Built frontend applications with React 18, TypeScript, and Vite.",
+        "Managed state with Redux Toolkit and routing with React Router.",
+        "Developed UI components using Material UI and SCSS.",
+        "Integrated APIs using Axios and handled forms with React Hook Form and Yup.",
+        "Implemented internationalization with i18next and authentication with Azure AD (MSAL).",
+        "Used AG Grid, Storybook, and code quality tools such as ESLint and Stylelint."
+      ]
+    },
+    {
+      "company": "Compañía de financiamiento Tuya S.A",
+      "role": "Full Stack Developer",
+      "period": "Jul 2023 - Jul 2024",
+      "responsibilities": [
+        "Developed and maintained REST APIs using .NET and Entity Framework.",
+        "Worked with SQL Server databases and optimized queries.",
+        "Implemented backend logic following clean architecture principles.",
+        "Collaborated in full stack development and system integration."
+      ]
+    },
+    {
+      "company": "Davivienda",
+      "role": "Backend Developer",
+      "period": "Aug 2022 - Nov 2023",
+      "responsibilities": [
+        "Developed and maintained REST APIs using Java Spring Boot and Express.js.",
+        "Containerized applications using Docker.",
+        "Deployed services using OpenShift.",
+        "Implemented unit testing with Jest and API documentation with Swagger."
+      ]
+    },
+    {
+      "company": "AlgarTech SAS",
+      "role": "Full Stack Developer",
+      "period": "Jan 2022 - Jul 2022",
+      "responsibilities": [
+        "Developed frontend components using React and Redux.",
+        "Worked with UI libraries such as Material UI, Bootstrap, and Ant Design.",
+        "Built REST APIs using Express.js, NestJS, and Spring Boot.",
+        "Designed SQL and NoSQL database schemas and queries."
+      ]
+    },
+    {
+      "company": "AlgarTech SAS",
+      "role": "Intern",
+      "period": "Jun 2021 - Jan 2022",
+      "responsibilities": [
+        "Managed IT procurement orders and processes.",
+        "Automated workflows using Python and Visual Basic.",
+        "Built PowerBI dashboards for data analysis.",
+        "Modeled business processes using BPMN."
+      ]
+    },
+    {
+      "company": "Freelance",
+      "role": "Full Stack Developer",
+      "period": "2021 - Present",
+      "responsibilities": [
+        "Developed APIs using Express.js.",
+        "Implemented authentication using JWT and UUID.",
+        "Designed NoSQL schemas with MongoDB.",
+        "Configured CI/CD pipelines using DigitalOcean."
+      ]
+    }
+  ],
+
+  "education": [
+    {
+      "institution": "Tecnológico de Antioquia",
+      "degree": "Software Engineering",
+      "period": "Jan 2019 - Aug 2024"
+    },
+    {
+      "institution": "Digital School CO",
+      "degree": "Full Stack Developer Bootcamp",
+      "period": "Aug 2021 - Jan 2022"
+    }
+  ],
+
+  "languages": [
+    {
+      "name": "Spanish",
+      "level": "Native"
+    },
+    {
+      "name": "English",
+      "level": "Advanced"
+    },
+    {
+      "name": "Portuguese",
+      "level": "Intermediate"
+    }
+  ],
+
+  "projects": [
+    {
+      "title": "Banking API System",
+      "description": "Scalable backend system for financial operations including transaction processing and account management.",
+      "techStack": ["Spring Boot", "Express.js", "Docker"],
+      "category": "backend",
+      "image": "/images/project1.png",
+      "githubUrl": "#",
+      "liveUrl": "#"
+    },
+    {
+      "title": "Financial Dashboard",
+      "description": "Interactive dashboard for financial analytics and reporting with dynamic data visualization.",
+      "techStack": ["React", "Redux", "Material UI"],
+      "category": "frontend",
+      "image": "/images/project2.png",
+      "githubUrl": "#",
+      "liveUrl": "#"
+    },
+    {
+      "title": "Enterprise Web Platform",
+      "description": "Full stack enterprise application with layered architecture and scalable backend services.",
+      "techStack": [".NET", "SQL Server", "React"],
+      "category": "fullstack",
+      "image": "/images/project3.png",
+      "githubUrl": "#",
+      "liveUrl": "#"
+    },
+    {
+      "title": "CI/CD Pipeline System",
+      "description": "Automated deployment pipeline for applications using containerization and cloud infrastructure.",
+      "techStack": ["Docker", "Azure DevOps", "Terraform"],
+      "category": "devops",
+      "image": "/images/project4.png",
+      "githubUrl": "#",
+      "liveUrl": "#"
+    },
+    {
+      "title": "Analytics & BI Platform",
+      "description": "Data analysis and visualization platform with dashboards and reporting tools.",
+      "techStack": ["PowerBI", "Python", "SQL"],
+      "category": "data",
+      "image": "/images/project5.png",
+      "githubUrl": "#",
+      "liveUrl": "#"
+    }
+  ]
+}
