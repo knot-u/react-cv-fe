@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
 import { ProjectsClient } from "@/components/features/projects-client";
+import { ProjectsPageHeader } from "@/components/features/projects-page-header";
 import { HeroGrid } from "@/components/ui/hero-grid";
 import { getPortfolioData, getProjectsPage } from "@/lib/api";
 
@@ -20,18 +21,7 @@ export default async function ProjectsPage() {
         <HeroGrid />
 
         <div className="relative mx-auto max-w-6xl">
-          <section className="mb-8 rounded-[32px] border border-border bg-background/70 p-6 backdrop-blur-md sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-foreground">
-              Projects
-            </p>
-            <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-              All work
-            </h1>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-muted">
-              A collection of full stack, backend, frontend, and DevOps projects.
-              Scroll to load more.
-            </p>
-          </section>
+          <ProjectsPageHeader />
 
           <ProjectsClient
             initialProjects={initial.items}
