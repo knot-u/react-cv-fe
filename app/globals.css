@@ -1,13 +1,41 @@
 @import "tailwindcss";
 
+/* ── Semantic design tokens ─────────────────────────────────────────────────
+   Edit ONLY these variables to retheme the entire app.
+   JS counterpart: lib/palette.ts (for imperative DOM / canvas code).
+   ────────────────────────────────────────────────────────────────────────── */
 :root {
-  --background: #020817;
-  --foreground: #e2e8f0;
+  /* Base */
+  --background:      #f6f6f6;
+  --foreground:      #000000;
+
+  /* Surfaces */
+  --surface:         rgba(0, 0, 0, 0.03);   /* card / section backgrounds  */
+  --surface-hover:   rgba(0, 0, 0, 0.05);   /* hover state on surfaces     */
+
+  /* Borders */
+  --border:          rgba(0, 0, 0, 0.10);   /* default borders             */
+  --border-strong:   rgba(0, 0, 0, 0.20);   /* emphasis / button borders   */
+  --border-focus:    rgba(0, 0, 0, 0.40);   /* hover/focus borders         */
+
+  /* Text */
+  --muted:           #6b7280;               /* secondary text (gray-500)   */
+  --subtle:          #9ca3af;               /* tertiary text   (gray-400)  */
 }
 
+/* Register tokens as Tailwind utilities:
+   bg-background, text-foreground, bg-surface, border-border, text-muted … */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background:    var(--background);
+  --color-foreground:    var(--foreground);
+  --color-surface:       var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border:        var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-border-focus:  var(--border-focus);
+  --color-muted:         var(--muted);
+  --color-subtle:        var(--subtle);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
