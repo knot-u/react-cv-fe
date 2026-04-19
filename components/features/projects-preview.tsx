@@ -25,13 +25,13 @@ export function ProjectsPreview({ projects }: ProjectsPreviewProps) {
         >
           <div>
             <SectionTag label="Projects" />
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               Selected work
             </h2>
           </div>
           <Link
             href="/projects"
-            className="hidden text-sm text-cyan-400 transition-colors hover:text-cyan-200 sm:block"
+            className="hidden text-sm text-foreground transition-colors hover:text-muted sm:block"
           >
             View all →
           </Link>
@@ -60,7 +60,7 @@ export function ProjectsPreview({ projects }: ProjectsPreviewProps) {
         >
           <Link
             href="/projects"
-            className="text-sm text-cyan-400 transition-colors hover:text-cyan-200"
+            className="text-sm text-foreground transition-colors hover:text-muted"
           >
             View all projects →
           </Link>

@@ -1,26 +1,19 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { animate, stagger } from "animejs";
+import { palette } from "@/lib/palette";
 
 // ─── Grid ──────────────────────────────────────────────────────
-const DOT_GAP       = 80;    // 1 node per 80 CSS px (dynamic resolution)
-const MAX_NODES     = 1500;  // safety cap for very large viewports
-const BASE_OPACITY  = 0.18;
-const LINE_OPACITY  = 0.07;
+const DOT_GAP       = 50;    // 1 node per 50 CSS px (dynamic resolution)
+const MAX_NODES     = 3000;  // safety cap for very large viewports
+const BASE_OPACITY  = 0.18;  // static opacity — no pulse
+const DOT_SIZE      = 4;     // px
 
-// ─── Net displacement (cursor repulsion) ───────────────────────
-const INFLUENCE_R   = 160;   // px — radius of cursor influence
+// ─── Net displacement (cursor repulsion) ───────────────────────────────────
+const INFLUENCE_R   = 240;   // px — radius of cursor influence
 const MAX_DISP      = 18;    // px — max node displacement at cursor centre
-const POS_LERP      = 0.10;  // position smoothing per frame (lower = more lag)
+const POS_LERP      = 0.10;  // position smoothing per frame
 const CUR_LERP      = 0.09;  // cursor smoothing
-
-// ─── Pulse (anime.js) ──────────────────────────────────────────
-const PULSE_PERIOD      = 3200;  // ms between pulses
-const RISE_MS           = 680;
-const FALL_MS           = 1050;
-const STAGGER_MS        = 46;
-const STAGGER_RETURN_MS = 32;
 
 export function HeroGrid() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -70,7 +63,6 @@ export function HeroGrid() {
     // wrapper  → positioned via RAF transform (displacement)
     // innerDot → animated by anime.js (scale + opacity, no conflict)
     const wrappers : HTMLSpanElement[] = [];
-    const innerDots: HTMLSpanElement[] = [];
     const frag = document.createDocumentFragment();
 
     for (let i = 0; i < total; i++) {
@@ -88,31 +80,30 @@ export function HeroGrid() {
         "left:0", "top:0",
         "width:0", "height:0",
         "will-change:transform",
-        // -1.5px centres the 3px dot at its origin
-        `transform:translate(${ox - 1.5}px,${oy - 1.5}px)`,
+      // -(DOT_SIZE/2) centres the dot at its origin
+        `transform:translate(${ox - DOT_SIZE / 2}px,${oy - DOT_SIZE / 2}px)`,
       ].join(";");
 
       // Inner dot: anime.js owns scale + opacity
       const inner = document.createElement("span");
       inner.style.cssText = [
         "display:block",
-        "width:3px", "height:3px",
+        `width:${DOT_SIZE}px`, `height:${DOT_SIZE}px`,
         "border-radius:50%",
-        "background:rgb(34,211,238)",
+        "background:" + palette.gridDot,
         `opacity:${BASE_OPACITY}`,
-        "will-change:transform,opacity",
+        "will-change:transform",
       ].join(";");
 
       wrapper.appendChild(inner);
       wrappers.push(wrapper);
-      innerDots.push(inner);
       frag.appendChild(wrapper);
     }
     container.appendChild(frag);
 
     // ── Reduced-motion: static net, no animation ───────────────
     if (prefersReduced) {
-      ctx.strokeStyle = `rgba(34,211,238,${LINE_OPACITY})`;
+      ctx.strokeStyle = palette.gridLine;
       ctx.lineWidth = 0.5;
       ctx.beginPath();
       for (let i = 0; i < total; i++) {
@@ -129,27 +120,23 @@ export function HeroGrid() {
     }
 
     // ── Cursor tracking ────────────────────────────────────────
-    const section = container.closest("section") ?? container.parentElement;
+    // Container is fixed, so listen on window directly.
     let rawX = w / 2, rawY = h / 2;
     let smoothX = rawX, smoothY = rawY;
 
-    const onMouseMove = (e: Event) => {
-      const ev  = e as MouseEvent;
-      const rect = container.getBoundingClientRect();
-      rawX = ev.clientX - rect.left;
-      rawY = ev.clientY - rect.top;
+    const onMouseMove = (e: MouseEvent) => {
+      rawX = e.clientX;
+      rawY = e.clientY;
     };
-    section?.addEventListener("mousemove", onMouseMove, { passive: true });
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
 
     // ── RAF loop: displacement + line redraw ───────────────────
-    const INF_R_SQ  = INFLUENCE_R * INFLUENCE_R;
-    const centerIdx = Math.floor(rows / 2) * cols + Math.floor(cols / 2);
-    let cursorIndex = centerIdx;
+    const INF_R_SQ = INFLUENCE_R * INFLUENCE_R;
     let rafId = 0;
 
     function drawLines() {
       ctx.clearRect(0, 0, w, h);
-      ctx.strokeStyle = `rgba(34,211,238,${LINE_OPACITY})`;
+      ctx.strokeStyle = palette.gridLine;
       ctx.lineWidth = 0.6;
       ctx.beginPath();
       for (let i = 0; i < total; i++) {
@@ -165,11 +152,6 @@ export function HeroGrid() {
       // Smooth cursor
       smoothX += (rawX - smoothX) * CUR_LERP;
       smoothY += (rawY - smoothY) * CUR_LERP;
-
-      // Track nearest grid cell for pulse origin
-      cursorIndex =
-        Math.min(rows - 1, Math.max(0, Math.round(smoothY / cellH - 0.5))) * cols +
-        Math.min(cols - 1, Math.max(0, Math.round(smoothX / cellW - 0.5)));
 
       // Displace nodes away from cursor, lerp toward target
       for (let i = 0; i < total; i++) {
@@ -189,9 +171,9 @@ export function HeroGrid() {
         curX[i] += (tx - curX[i]) * POS_LERP;
         curY[i] += (ty - curY[i]) * POS_LERP;
 
-        // -1.5 centres the 3px dot on the node position
+        // -(DOT_SIZE/2) centres the dot on the node position
         wrappers[i].style.transform =
-          `translate(${curX[i] - 1.5}px,${curY[i] - 1.5}px)`;
+          `translate(${curX[i] - DOT_SIZE / 2}px,${curY[i] - DOT_SIZE / 2}px)`;
       }
 
       drawLines();
@@ -200,45 +182,9 @@ export function HeroGrid() {
 
     rafId = requestAnimationFrame(tick);
 
-    // ── Pulse (anime.js, targets innerDots — no transform clash) ─
-    let running = true;
-    let fallTimerId: ReturnType<typeof setTimeout> | null = null;
-    const maxDist   = Math.ceil(Math.sqrt(((cols - 1) / 2) ** 2 + ((rows - 1) / 2) ** 2));
-    const maxSpread = maxDist * STAGGER_MS;
-
-    function pulse(fromIdx: number) {
-      if (!running) return;
-      const opts = { grid: [cols, rows], from: fromIdx };
-      animate(innerDots, {
-        scale:   stagger([2.5, 1.1], opts),
-        opacity: stagger([0.85, 0.15], opts),
-        duration: RISE_MS,
-        ease: "outExpo",
-        delay: stagger(STAGGER_MS, opts),
-      });
-      if (fallTimerId !== null) clearTimeout(fallTimerId);
-      fallTimerId = setTimeout(() => {
-        if (!running) return;
-        animate(innerDots, {
-          scale: 1,
-          opacity: BASE_OPACITY,
-          duration: FALL_MS,
-          ease: "inOutSine",
-          delay: stagger(STAGGER_RETURN_MS, opts),
-        });
-      }, RISE_MS + maxSpread);
-    }
-
-    const initTimer = setTimeout(() => pulse(centerIdx), 450);
-    const interval  = setInterval(() => pulse(cursorIndex), PULSE_PERIOD);
-
     return () => {
-      running = false;
       cancelAnimationFrame(rafId);
-      clearTimeout(initTimer);
-      clearInterval(interval);
-      if (fallTimerId !== null) clearTimeout(fallTimerId);
-      section?.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mousemove", onMouseMove);
       if (container.contains(canvas)) container.removeChild(canvas);
       wrappers.forEach((wr) => { if (container.contains(wr)) container.removeChild(wr); });
     };
@@ -248,13 +194,7 @@ export function HeroGrid() {
     <div
       ref={containerRef}
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 overflow-hidden"
-      style={{
-        maskImage:
-          "radial-gradient(ellipse 88% 80% at 50% 50%, black 15%, transparent 88%)",
-        WebkitMaskImage:
-          "radial-gradient(ellipse 88% 80% at 50% 50%, black 15%, transparent 88%)",
-      }}
+      className="pointer-events-none fixed inset-0 overflow-hidden"
     />
   );
 }

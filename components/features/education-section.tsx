@@ -10,10 +10,10 @@ interface EducationSectionProps {
 }
 
 const LEVEL_COLOR: Record<string, string> = {
-  Native: "bg-cyan-400",
-  Advanced: "bg-cyan-500/70",
-  Intermediate: "bg-cyan-500/40",
-  Beginner: "bg-slate-500",
+  Native:       "bg-foreground",
+  Advanced:     "bg-foreground/70",
+  Intermediate: "bg-foreground/40",
+  Beginner:     "bg-foreground/25",
 };
 
 export function EducationSection({
@@ -43,11 +43,11 @@ export function EducationSection({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
-                className="rounded-2xl border border-white/10 bg-slate-900/60 p-5"
+                className="rounded-2xl border border-border bg-surface p-5"
               >
-                <p className="font-semibold text-white">{item.degree}</p>
-                <p className="mt-1 text-sm text-cyan-300">{item.institution}</p>
-                <p className="mt-1 text-xs text-slate-500">{item.period}</p>
+                <p className="font-semibold text-foreground">{item.degree}</p>
+                <p className="mt-1 text-sm text-muted">{item.institution}</p>
+                <p className="mt-1 text-xs text-subtle">{item.period}</p>
               </motion.div>
             ))}
           </div>
@@ -62,7 +62,7 @@ export function EducationSection({
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
         >
           <SectionTag label="Languages" />
-          <h2 className="mt-3 mb-6 text-3xl font-semibold tracking-tight text-white">
+          <h2 className="mt-3 mb-6 text-3xl font-semibold tracking-tight text-foreground">
             Languages
           </h2>
 
@@ -74,15 +74,15 @@ export function EducationSection({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
-                className="rounded-2xl border border-white/10 bg-slate-900/60 p-5"
+                className="rounded-2xl border border-border bg-surface p-5"
               >
                 <div className="flex items-center justify-between">
-                  <p className="font-semibold text-white">{lang.name}</p>
-                  <span className="text-xs text-slate-400">{lang.level}</span>
+                  <p className="font-semibold text-foreground">{lang.name}</p>
+                  <span className="text-xs text-subtle">{lang.level}</span>
                 </div>
-                <div className="mt-3 h-1.5 w-full rounded-full bg-slate-800">
+                <div className="mt-3 h-1.5 w-full rounded-full bg-border">
                   <div
-                    className={`h-1.5 rounded-full ${LEVEL_COLOR[lang.level] ?? "bg-slate-500"}`}
+                    className={`h-1.5 rounded-full ${LEVEL_COLOR[lang.level] ?? "bg-foreground/25"}`}
                     style={{
                       width:
                         lang.level === "Native"

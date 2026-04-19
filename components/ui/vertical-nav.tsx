@@ -119,7 +119,7 @@ export function VerticalNav() {
       className="fixed left-4 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center xl:left-8 sm:flex"
     >
       {/* Track line */}
-      <div className="absolute left-[5px] top-0 h-full w-px bg-white/10" />
+      <div className="absolute left-[5px] top-0 h-full w-px bg-border" />
 
       <ul className="relative flex flex-col gap-6">
         {SECTIONS.map(({ id, label }) => {
@@ -140,8 +140,8 @@ export function VerticalNav() {
                   }}
                   className={`block h-2.5 w-2.5 rounded-full transition-colors duration-200 ${
                     isActive
-                      ? "bg-cyan-400 shadow-[0_0_8px_theme(colors.cyan.400/60%)]"
-                      : "bg-slate-600 group-hover:bg-slate-400"
+                      ? "bg-foreground"
+                      : "bg-border-strong group-hover:bg-foreground"
                   }`}
                   style={{ transformOrigin: "center" }}
                 />
@@ -150,7 +150,7 @@ export function VerticalNav() {
                 <span
                   id={`vnav-label-${id}`}
                   style={{ opacity: 0 }}
-                  className="pointer-events-none absolute left-5 whitespace-nowrap rounded-lg border border-white/10 bg-slate-900/90 px-2.5 py-1 text-xs font-medium text-slate-200 backdrop-blur-sm"
+                  className="pointer-events-none absolute left-5 whitespace-nowrap rounded-lg border border-border bg-background/90 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur-sm"
                 >
                   {label}
                 </span>

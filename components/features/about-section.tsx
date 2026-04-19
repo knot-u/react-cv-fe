@@ -12,7 +12,7 @@ export function AboutSection({ about }: AboutSectionProps) {
   return (
     <section id="about" className="scroll-mt-20 px-4 py-20 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="rounded-[32px] border border-white/10 bg-slate-900/60 p-8 sm:p-12">
+        <div className="rounded-[32px] border border-border bg-surface p-8 sm:p-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export function AboutSection({ about }: AboutSectionProps) {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <SectionTag label="About" />
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               Who I am
             </h2>
           </motion.div>
@@ -33,7 +33,7 @@ export function AboutSection({ about }: AboutSectionProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-                className="text-sm leading-7 text-slate-400"
+                className="text-sm leading-7 text-muted"
               >
                 {paragraph}
               </motion.p>

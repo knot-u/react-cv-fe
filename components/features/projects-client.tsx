@@ -85,7 +85,7 @@ export function ProjectsClient({
             {[0, 1, 2].map((i) => (
               <motion.span
                 key={i}
-                className="h-2 w-2 rounded-full bg-cyan-500"
+                className="h-2 w-2 rounded-full bg-foreground"
                 animate={{ opacity: [0.3, 1, 0.3] }}
                 transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
               />
@@ -93,7 +93,7 @@ export function ProjectsClient({
           </div>
         )}
         {!hasMore && !loading && visible.length > 0 && (
-          <p className="text-xs text-slate-600">All projects loaded</p>
+          <p className="text-xs text-subtle">All projects loaded</p>
         )}
       </div>
     </div>

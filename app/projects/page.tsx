@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
 import { ProjectsClient } from "@/components/features/projects-client";
+import { HeroGrid } from "@/components/ui/hero-grid";
 import { getPortfolioData, getProjectsPage } from "@/lib/api";
 
 export const metadata = {
@@ -14,16 +15,19 @@ export default async function ProjectsPage() {
   return (
     <>
       <Navbar />
-      <main className="px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
-        <div className="mx-auto max-w-6xl">
-          <section className="mb-8 rounded-[32px] border border-white/10 bg-slate-900/60 p-6 sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300">
+      <main className="relative px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
+        {/* Interactive net grid background */}
+        <HeroGrid />
+
+        <div className="relative mx-auto max-w-6xl">
+          <section className="mb-8 rounded-[32px] border border-border bg-background/70 p-6 backdrop-blur-md sm:p-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-foreground">
               Projects
             </p>
-            <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
               All work
             </h1>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300">
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-muted">
               A collection of full stack, backend, frontend, and DevOps projects.
               Scroll to load more.
             </p>

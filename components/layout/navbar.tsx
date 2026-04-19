@@ -18,11 +18,11 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <Link
           href="/"
-          className="text-sm font-semibold tracking-tight text-white hover:text-cyan-300 transition-colors"
+          className="text-sm font-semibold tracking-tight text-foreground hover:text-muted transition-colors"
         >
           Santiago Cardona
         </Link>
@@ -38,8 +38,8 @@ export function Navbar() {
                 href={link.href}
                 className={`text-sm transition-colors ${
                   isActive
-                    ? "text-cyan-300"
-                    : "text-slate-400 hover:text-white"
+                    ? "text-foreground"
+                    : "text-muted hover:text-foreground"
                 }`}
               >
                 {link.label}
@@ -55,13 +55,13 @@ export function Navbar() {
           onClick={() => setOpen((v) => !v)}
         >
           <span
-            className={`block h-0.5 w-5 bg-white transition-transform origin-center ${open ? "translate-y-2 rotate-45" : ""}`}
+            className={`block h-0.5 w-5 bg-foreground transition-transform origin-center ${open ? "translate-y-2 rotate-45" : ""}`}
           />
           <span
-            className={`block h-0.5 w-5 bg-white transition-opacity ${open ? "opacity-0" : ""}`}
+            className={`block h-0.5 w-5 bg-foreground transition-opacity ${open ? "opacity-0" : ""}`}
           />
           <span
-            className={`block h-0.5 w-5 bg-white transition-transform origin-center ${open ? "-translate-y-2 -rotate-45" : ""}`}
+            className={`block h-0.5 w-5 bg-foreground transition-transform origin-center ${open ? "-translate-y-2 -rotate-45" : ""}`}
           />
         </button>
       </div>
@@ -74,14 +74,14 @@ export function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-t border-white/10 sm:hidden"
+            className="overflow-hidden border-t border-border sm:hidden"
           >
             <ul className="flex flex-col px-4 py-2">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block py-3 text-sm text-slate-300 hover:text-white"
+                    className="block py-3 text-sm text-muted hover:text-foreground"
                     onClick={() => setOpen(false)}
                   >
                     {link.label}

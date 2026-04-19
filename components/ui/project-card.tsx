@@ -15,11 +15,11 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
     <motion.article
       whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="flex cursor-pointer flex-col rounded-2xl border border-white/10 bg-slate-900/60 p-5 transition-colors hover:border-cyan-500/30"
+      className="flex cursor-pointer flex-col rounded-2xl border border-border bg-background/70 p-5 backdrop-blur-md transition-colors hover:border-border-strong"
       onClick={onClick}
     >
       <div className="mb-3 flex items-center justify-between">
-        <span className="rounded-full bg-slate-800 px-2.5 py-0.5 text-xs text-slate-400 capitalize">
+          <span className="rounded-full bg-border px-2.5 py-0.5 text-xs text-muted capitalize">
           {project.category}
         </span>
         <div className="flex gap-2">
@@ -28,7 +28,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-slate-400 hover:text-white transition-colors"
+              className="text-xs text-muted hover:text-foreground transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               GitHub
@@ -39,7 +39,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-cyan-400 hover:text-cyan-200 transition-colors"
+              className="text-xs text-foreground hover:text-muted transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               Live ↗
@@ -48,10 +48,10 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
         </div>
       </div>
 
-      <h3 className="mb-2 text-base font-semibold text-white">
+      <h3 className="mb-2 text-base font-semibold text-foreground">
         {project.title}
       </h3>
-      <p className="mb-4 flex-1 text-sm leading-6 text-slate-400">
+      <p className="mb-4 flex-1 text-sm leading-6 text-muted">
         {project.description}
       </p>
 

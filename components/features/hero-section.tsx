@@ -3,15 +3,15 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { createTimeline, stagger } from "animejs";
-import { HeroGrid } from "@/components/ui/hero-grid";
 import type { HeroData } from "@/lib/types";
+import { ClockerNav } from "../ui/clocker-nav";
 
 interface HeroSectionProps {
   hero: HeroData;
 }
 
 export function HeroSection({ hero }: HeroSectionProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -68,46 +68,43 @@ export function HeroSection({ hero }: HeroSectionProps) {
       ref={containerRef}
       className="relative flex min-h-[calc(100vh-64px)] flex-col items-start justify-center px-4 py-20 sm:px-6"
     >
-      {/* Interactive dot grid */}
-      <HeroGrid />
-
-      {/* Radial vignette to fade grid edges */}
+      {/* Radial vignette */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, #020817 100%)",
+            "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, var(--background) 100%)",
         }}
         aria-hidden="true"
       />
 
-      <div className="mx-auto w-full max-w-6xl">
-        <p className="hero-tag mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300 opacity-0">
+      <div className="mx-auto w-full max-w-6xl md:pr-28 lg:pr-40">
+        <p className="hero-tag mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-foreground opacity-0">
           Available for work
         </p>
 
-        <h1 className="hero-name mb-3 text-5xl font-bold tracking-tight text-white opacity-0 sm:text-7xl">
+        <h1 className="hero-name mb-3 text-5xl font-bold tracking-tight text-foreground opacity-0 sm:text-7xl">
           {hero.name}
         </h1>
 
-        <p className="hero-role mb-6 text-xl font-medium text-slate-400 opacity-0 sm:text-2xl">
+        <p className="hero-role mb-6 text-xl font-medium text-muted opacity-0 sm:text-2xl">
           {hero.role}
         </p>
 
-        <p className="hero-summary mb-10 max-w-2xl text-base leading-7 text-slate-400 opacity-0 sm:text-lg">
+        <p className="hero-summary mb-10 max-w-2xl text-base leading-7 text-muted opacity-0 sm:text-lg">
           {hero.summary}
         </p>
 
         <div className="flex flex-wrap gap-3">
           <Link
             href="/projects"
-            className="hero-action inline-flex items-center rounded-xl bg-cyan-500 px-5 py-2.5 text-sm font-semibold text-slate-950 opacity-0 transition-colors hover:bg-cyan-400"
+            className="hero-action inline-flex items-center rounded-xl bg-foreground px-5 py-2.5 text-sm font-semibold text-background opacity-0 transition-colors hover:bg-foreground/80"
           >
             View Projects
           </Link>
           <Link
             href={`mailto:${hero.contact.email}`}
-            className="hero-action inline-flex items-center rounded-xl border border-white/20 px-5 py-2.5 text-sm font-semibold text-white opacity-0 transition-colors hover:border-white/40 hover:bg-white/5"
+            className="hero-action inline-flex items-center rounded-xl border border-border-strong px-5 py-2.5 text-sm font-semibold text-foreground opacity-0 transition-colors hover:border-border-focus hover:bg-foreground/5"
           >
             Get in Touch
           </Link>
@@ -115,12 +112,14 @@ export function HeroSection({ hero }: HeroSectionProps) {
             href={hero.contact.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="hero-action inline-flex items-center rounded-xl border border-white/20 px-5 py-2.5 text-sm font-semibold text-white opacity-0 transition-colors hover:border-white/40 hover:bg-white/5"
+            className="hero-action inline-flex items-center rounded-xl border border-border-strong px-5 py-2.5 text-sm font-semibold text-foreground opacity-0 transition-colors hover:border-border-focus hover:bg-foreground/5"
           >
             LinkedIn ↗
           </Link>
         </div>
       </div>
+
+      <ClockerNav targetRef={containerRef} />
     </section>
   );
 }

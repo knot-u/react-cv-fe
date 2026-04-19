@@ -30,7 +30,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
           className="mb-10"
         >
           <SectionTag label="Skills" />
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             Tech stack
           </h2>
         </motion.div>
@@ -43,9 +43,9 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.07, ease: "easeOut" }}
-              className="rounded-2xl border border-white/10 bg-slate-900/60 p-5"
+              className="rounded-2xl border border-border bg-surface p-5"
             >
-              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-subtle">
                 {cat.label}
               </p>
               <div className="flex flex-wrap gap-2">
