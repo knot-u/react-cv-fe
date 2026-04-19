@@ -117,9 +117,9 @@ export function HeroSection({ hero }: HeroSectionProps) {
             LinkedIn ↗
           </Link>
         </div>
-      </div>
 
-      <ClockerNav targetRef={containerRef} />
+        <ClockerNav targetRef={containerRef} />
+      </div>
     </section>
   );
 }

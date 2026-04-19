@@ -5,7 +5,7 @@ import { animate } from "animejs";
 
 const SECTIONS = [
   { id: "hero", label: "Home" },
-  { id: "about", label: "About" },
+  { id: "about", label: "About me!" },
   { id: "skills", label: "Skills" },
   { id: "experience", label: "Experience" },
   { id: "education", label: "Education" },
