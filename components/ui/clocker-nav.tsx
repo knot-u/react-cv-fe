@@ -52,9 +52,11 @@ const R0          = 500;             // larger outer radius for every spoke
 const INNER_R     = 10;              // small inner orbit for the trailing x1 point
 const CANVAS      = 620;             // larger SVG viewport
 const HALF        = CANVAS / 2;      // centre = (HALF, HALF)
-const COLOR_BOOST = 5;             // color reaches its target earlier in the scroll
+const COLOR_BOOST = 5;              // color reaches its target earlier in the scroll
 const SMOOTHING   = 0.14;            // scroll easing factor for smoother motion
-const X1_LAG_MS   = 1000;             // x1 trails x2 by roughly 0.2s
+const X1_LAG_MS   = 1000;            // x1 trails x2 with a soft delay
+const IDLE_SPIN_RPS = 0.005;         // constant subtle spin, in revolutions per second
+const COLOR_CYCLE_MS = 14000;        // slow palette drift duration
 
 type ClockerNavProps = { targetRef: RefObject<HTMLElement | null> };
 
@@ -70,6 +72,19 @@ const lerpRgb = (
   t: number,
 ) =>
   `rgb(${Math.round(lerp(from[0], to[0], t))},${Math.round(lerp(from[1], to[1], t))},${Math.round(lerp(from[2], to[2], t))})`;
+
+const paletteAt = (index: number): [number, number, number] => {
+  const wrapped = ((index % N) + N) % N;
+  const base = Math.floor(wrapped);
+  const next = (base + 1) % N;
+  const mix = wrapped - base;
+
+  return [
+    lerp(SPOKES[base][0], SPOKES[next][0], mix),
+    lerp(SPOKES[base][1], SPOKES[next][1], mix),
+    lerp(SPOKES[base][2], SPOKES[next][2], mix),
+  ];
+};
 
 /* ── component ─────────────────────────────────────────────── */
 
@@ -124,12 +139,16 @@ export function ClockerNav({ targetRef }: ClockerNavProps) {
     let rafId = 0;
     let isAnimating = false;
 
-    const render = (p: number, tailP: number) => {
-      const colorP = Math.min(p * COLOR_BOOST, 1);
+    const render = (p: number, tailP: number, now: number) => {
+      const boosted = Math.min(p * COLOR_BOOST, 1);
+      const colorP = lerp(0.18, 1, boosted);
+      const idleR1 = now * IDLE_SPIN_RPS * TWO_PI;
+      const tailIdleR1 = Math.max(now - X1_LAG_MS / 1000, 0) * IDLE_SPIN_RPS * TWO_PI;
+      const paletteShift = (now * 1000 / COLOR_CYCLE_MS) * N;
 
       // r1 ∈ [0, 2π] — rotation offset driven by scroll
-      const r1 = p * TWO_PI;
-      const tailR1 = tailP * TWO_PI;
+      const r1 = p * TWO_PI + idleR1;
+      const tailR1 = tailP * TWO_PI + tailIdleR1;
 
       for (let i = 0; i < N; i++) {
         const line = lines[i];
@@ -137,6 +156,7 @@ export function ClockerNav({ targetRef }: ClockerNavProps) {
 
         // t_i — base angle for spoke i, evenly distributed
         const t_i = i * STEP;
+        const dynamicColor = paletteAt(i + paletteShift);
 
         // x2 leads, x1 follows with a slight delay
         const theta2 = t_i + r1;
@@ -152,9 +172,9 @@ export function ClockerNav({ targetRef }: ClockerNavProps) {
         line.setAttribute("x2", String(x2));
         line.setAttribute("y2", String(y2));
 
-        // Colour transitions faster than the rotation
-        line.setAttribute("stroke", lerpRgb(START_RGB, SPOKES[i], colorP));
-        line.setAttribute("stroke-opacity", String(lerp(0.55, 0.95, colorP)));
+        // Colour drifts slowly while staying stronger as scroll increases
+        line.setAttribute("stroke", lerpRgb(START_RGB, dynamicColor, colorP));
+        line.setAttribute("stroke-opacity", String(lerp(0.6, 0.95, colorP)));
       }
 
       container.style.opacity = String(
@@ -162,24 +182,17 @@ export function ClockerNav({ targetRef }: ClockerNavProps) {
       );
     };
 
-    const tick = () => {
+    const tick = (timestamp: number) => {
+      const now = timestamp / 1000;
       const next = lerp(currentProgressRef.current, targetProgressRef.current, SMOOTHING);
       const tailStep = Math.min(16 / X1_LAG_MS, 1);
       const nextTail = lerp(tailProgressRef.current, next, tailStep);
 
       currentProgressRef.current = next;
       tailProgressRef.current = nextTail;
-      render(next, nextTail);
+      render(next, nextTail, now);
 
-      const needsMore =
-        Math.abs(targetProgressRef.current - next) > 0.001 ||
-        Math.abs(next - nextTail) > 0.001;
-
-      if (needsMore) {
-        rafId = requestAnimationFrame(tick);
-      } else {
-        isAnimating = false;
-      }
+      rafId = requestAnimationFrame(tick);
     };
 
     const startAnimation = () => {
@@ -190,7 +203,6 @@ export function ClockerNav({ targetRef }: ClockerNavProps) {
 
     const onScroll = () => {
       targetProgressRef.current = calcProgress();
-      startAnimation();
     };
 
     targetProgressRef.current = calcProgress();
