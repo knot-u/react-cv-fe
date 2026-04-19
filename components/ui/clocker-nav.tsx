@@ -48,13 +48,13 @@ const SPOKES: [number, number, number][] = [
 ];
 
 const START_RGB: [number, number, number] = [17, 24, 39]; // #111827
-const R0          = 250;             // larger outer radius for every spoke
+const R0          = 500;             // larger outer radius for every spoke
 const INNER_R     = 10;              // small inner orbit for the trailing x1 point
 const CANVAS      = 620;             // larger SVG viewport
 const HALF        = CANVAS / 2;      // centre = (HALF, HALF)
 const COLOR_BOOST = 5;             // color reaches its target earlier in the scroll
 const SMOOTHING   = 0.14;            // scroll easing factor for smoother motion
-const X1_LAG_MS   = 200;             // x1 trails x2 by roughly 0.2s
+const X1_LAG_MS   = 1000;             // x1 trails x2 by roughly 0.2s
 
 type ClockerNavProps = { targetRef: RefObject<HTMLElement | null> };
 
@@ -80,8 +80,28 @@ export function ClockerNav({ targetRef }: ClockerNavProps) {
   const currentProgressRef = useRef(0);
   const tailProgressRef = useRef(0);
   const [mounted, setMounted] = useState(false);
+  const [diameter, setDiameter] = useState(CANVAS);
 
   useEffect(() => { setMounted(true); }, []);
+
+  useEffect(() => {
+    const target = targetRef.current;
+    if (!target) return;
+
+    const updateDiameter = () => {
+      setDiameter(Math.max(target.clientHeight, 420));
+    };
+
+    updateDiameter();
+    const resizeObserver = new ResizeObserver(updateDiameter);
+    resizeObserver.observe(target);
+    window.addEventListener("resize", updateDiameter);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateDiameter);
+    };
+  }, [targetRef]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -186,19 +206,25 @@ export function ClockerNav({ targetRef }: ClockerNavProps) {
   }, [targetRef]);
 
   /* ── SVG render ───────────────────────────────────────────── */
+  const visibleWidth = diameter / 2;
+
   return (
     <div
       ref={containerRef}
       aria-hidden="true"
-      className="pointer-events-none absolute top-1/2 z-20 hidden -translate-y-1/2 md:block"
-      style={{ right: -HALF, opacity: 0.9 }}
+      className="pointer-events-none absolute inset-y-0 right-0 z-20 hidden overflow-hidden md:flex md:items-center md:justify-end"
+      style={{ width: visibleWidth, opacity: 0.9 }}
     >
-      <svg
-        width={CANVAS}
-        height={CANVAS}
-        viewBox={`0 0 ${CANVAS} ${CANVAS}`}
-        className="overflow-visible"
+      <div
+        className="clocker-mask relative shrink-0 overflow-hidden rounded-full"
+        style={{ width: diameter, height: diameter, marginRight: -visibleWidth }}
       >
+        <svg
+          width={diameter}
+          height={diameter}
+          viewBox={`0 0 ${CANVAS} ${CANVAS}`}
+          className="block h-full w-full"
+        >
         {/*
           Seq(Segment((0,0), (r·cos(t+r1), r·sin(t+r1))), t, 0, 2π, 2π/N)
           Initial state: r1 = 0, r = R0 for all spokes
@@ -224,9 +250,10 @@ export function ClockerNav({ targetRef }: ClockerNavProps) {
           );
         })}
 
-        {/* Centre pivot */}
-        {mounted && <circle cx={HALF} cy={HALF} r={4} className="fill-foreground/60" />}
-      </svg>
+          {/* Centre pivot */}
+          {mounted && <circle cx={HALF} cy={HALF} r={4} className="fill-foreground/60" />}
+        </svg>
+      </div>
     </div>
   );
 }

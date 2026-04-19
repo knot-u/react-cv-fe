@@ -66,7 +66,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
     <section
       id="hero"
       ref={containerRef}
-      className="relative flex min-h-[calc(100vh-64px)] flex-col items-start justify-center px-4 py-20 sm:px-6"
+      className="relative flex min-h-[calc(100vh-64px)] flex-col items-start justify-center overflow-x-hidden px-4 py-20 sm:px-6"
     >
       {/* Radial vignette */}
       <div
