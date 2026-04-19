@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { createTimeline, stagger } from "animejs";
+import { HeroGrid } from "@/components/ui/hero-grid";
 import type { HeroData } from "@/lib/types";
 
 interface HeroSectionProps {
@@ -63,16 +64,22 @@ export function HeroSection({ hero }: HeroSectionProps) {
 
   return (
     <section
+      id="hero"
       ref={containerRef}
       className="relative flex min-h-[calc(100vh-64px)] flex-col items-start justify-center px-4 py-20 sm:px-6"
     >
-      {/* Background gradient accent */}
+      {/* Interactive dot grid */}
+      <HeroGrid />
+
+      {/* Radial vignette to fade grid edges */}
       <div
-        className="pointer-events-none absolute inset-0 -z-10"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, #020817 100%)",
+        }}
         aria-hidden="true"
-      >
-        <div className="absolute left-1/4 top-1/4 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/5 blur-3xl" />
-      </div>
+      />
 
       <div className="mx-auto w-full max-w-6xl">
         <p className="hero-tag mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300 opacity-0">

@@ -6,6 +6,8 @@ import { ExperienceSection } from "@/components/features/experience-section";
 import { EducationSection } from "@/components/features/education-section";
 import { ProjectsPreview } from "@/components/features/projects-preview";
 import { ContactSection } from "@/components/features/contact-section";
+import { VerticalNav } from "@/components/ui/vertical-nav";
+import { SectionReveal } from "@/components/ui/section-reveal";
 import { getPortfolioData } from "@/lib/api";
 
 export default async function HomePage() {
@@ -14,14 +16,27 @@ export default async function HomePage() {
   return (
     <>
       <Navbar />
+      <VerticalNav />
       <main>
         <HeroSection hero={data.hero} />
-        <AboutSection about={data.about} />
-        <SkillsSection skills={data.skills} />
-        <ExperienceSection experience={data.experience} />
-        <EducationSection education={data.education} languages={data.languages} />
-        <ProjectsPreview projects={data.projects} />
-        <ContactSection contact={data.hero.contact} />
+        <SectionReveal>
+          <AboutSection about={data.about} />
+        </SectionReveal>
+        <SectionReveal>
+          <SkillsSection skills={data.skills} />
+        </SectionReveal>
+        <SectionReveal>
+          <ExperienceSection experience={data.experience} />
+        </SectionReveal>
+        <SectionReveal>
+          <EducationSection education={data.education} languages={data.languages} />
+        </SectionReveal>
+        <SectionReveal>
+          <ProjectsPreview projects={data.projects} />
+        </SectionReveal>
+        <SectionReveal>
+          <ContactSection contact={data.hero.contact} />
+        </SectionReveal>
       </main>
     </>
   );
