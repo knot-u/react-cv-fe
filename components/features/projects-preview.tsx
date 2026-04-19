@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { SectionTag } from "@/components/ui/section-tag";
 import { ProjectCard } from "@/components/ui/project-card";
+import { useLanguage } from "@/hooks/use-language";
 import type { Project } from "@/lib/types";
 
 interface ProjectsPreviewProps {
@@ -12,6 +13,7 @@ interface ProjectsPreviewProps {
 
 export function ProjectsPreview({ projects }: ProjectsPreviewProps) {
   const preview = projects.slice(0, 3);
+  const { copy } = useLanguage();
 
   return (
     <section id="projects" className="scroll-mt-20 px-4 py-20 sm:px-6">
@@ -24,16 +26,16 @@ export function ProjectsPreview({ projects }: ProjectsPreviewProps) {
           className="mb-10 flex items-end justify-between"
         >
           <div>
-            <SectionTag label="Projects" />
+            <SectionTag label={copy.projects.tag} />
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Selected work
+              {copy.projects.previewTitle}
             </h2>
           </div>
           <Link
             href="/projects"
             className="hidden text-sm text-foreground transition-colors hover:text-muted sm:block"
           >
-            View all →
+            {copy.projects.viewAll}
           </Link>
         </motion.div>
 
@@ -62,7 +64,7 @@ export function ProjectsPreview({ projects }: ProjectsPreviewProps) {
             href="/projects"
             className="text-sm text-foreground transition-colors hover:text-muted"
           >
-            View all projects →
+            {copy.projects.viewAllProjects}
           </Link>
         </motion.div>
       </div>

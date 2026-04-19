@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { TechBadge } from "./tech-badge";
+import { useLanguage } from "@/hooks/use-language";
 import type { Project } from "@/lib/types";
 
 interface ProjectCardProps {
@@ -11,6 +12,9 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, onClick }: ProjectCardProps) {
+  const { copy } = useLanguage();
+  const localizedProject = copy.projects.itemsById[project.id];
+
   return (
     <motion.article
       whileHover={{ y: -4 }}
@@ -20,7 +24,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
     >
       <div className="mb-3 flex items-center justify-between">
           <span className="rounded-full bg-border px-2.5 py-0.5 text-xs text-muted capitalize">
-          {project.category}
+          {copy.projects.categories[project.category] ?? project.category}
         </span>
         <div className="flex gap-2">
           {project.githubUrl !== "#" && (
@@ -31,7 +35,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
               className="text-xs text-muted hover:text-foreground transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
-              GitHub
+              {copy.projects.github}
             </Link>
           )}
           {project.liveUrl !== "#" && (
@@ -42,17 +46,17 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
               className="text-xs text-foreground hover:text-muted transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
-              Live ↗
+              {copy.projects.live}
             </Link>
           )}
         </div>
       </div>
 
       <h3 className="mb-2 text-base font-semibold text-foreground">
-        {project.title}
+        {localizedProject?.title ?? project.title}
       </h3>
       <p className="mb-4 flex-1 text-sm leading-6 text-muted">
-        {project.description}
+        {localizedProject?.description ?? project.description}
       </p>
 
       <div className="flex flex-wrap gap-2">

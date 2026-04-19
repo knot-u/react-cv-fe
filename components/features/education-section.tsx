@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { SectionTag } from "@/components/ui/section-tag";
+import { useLanguage } from "@/hooks/use-language";
 import type { EducationItem, Language } from "@/lib/types";
 
 interface EducationSectionProps {
@@ -20,6 +21,8 @@ export function EducationSection({
   education,
   languages,
 }: EducationSectionProps) {
+  const { copy } = useLanguage();
+
   return (
     <section id="education" className="scroll-mt-20 px-4 py-20 sm:px-6">
       <div className="mx-auto max-w-6xl grid gap-8 sm:grid-cols-2">
@@ -30,9 +33,9 @@ export function EducationSection({
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <SectionTag label="Education" />
+          <SectionTag label={copy.education.tag} />
           <h2 className="mt-3 mb-6 text-3xl font-semibold tracking-tight text-white">
-            Academic background
+            {copy.education.title}
           </h2>
 
           <div className="flex flex-col gap-4">
@@ -45,7 +48,7 @@ export function EducationSection({
                 transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
                 className="rounded-2xl border border-border bg-surface p-5"
               >
-                <p className="font-semibold text-foreground">{item.degree}</p>
+                <p className="font-semibold text-foreground">{copy.education.itemsById[item.id]?.degree ?? item.degree}</p>
                 <p className="mt-1 text-sm text-muted">{item.institution}</p>
                 <p className="mt-1 text-xs text-subtle">{item.period}</p>
               </motion.div>
@@ -61,9 +64,9 @@ export function EducationSection({
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
         >
-          <SectionTag label="Languages" />
+          <SectionTag label={copy.languagesSection.tag} />
           <h2 className="mt-3 mb-6 text-3xl font-semibold tracking-tight text-foreground">
-            Languages
+            {copy.languagesSection.title}
           </h2>
 
           <div className="flex flex-col gap-4">
@@ -77,8 +80,8 @@ export function EducationSection({
                 className="rounded-2xl border border-border bg-surface p-5"
               >
                 <div className="flex items-center justify-between">
-                  <p className="font-semibold text-foreground">{lang.name}</p>
-                  <span className="text-xs text-subtle">{lang.level}</span>
+                  <p className="font-semibold text-foreground">{copy.languagesSection.itemsById[lang.id]?.name ?? lang.name}</p>
+                  <span className="text-xs text-subtle">{copy.languagesSection.levels[lang.level] ?? lang.level}</span>
                 </div>
                 <div className="mt-3 h-1.5 w-full rounded-full bg-border">
                   <div

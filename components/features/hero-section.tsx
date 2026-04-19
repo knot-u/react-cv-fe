@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { createTimeline, stagger } from "animejs";
 import type { HeroData } from "@/lib/types";
+import { useLanguage } from "@/hooks/use-language";
 import { ClockerNav } from "../ui/clocker-nav";
 
 interface HeroSectionProps {
@@ -12,6 +13,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ hero }: HeroSectionProps) {
   const containerRef = useRef<HTMLElement>(null);
+  const { copy } = useLanguage();
 
   useEffect(() => {
     const el = containerRef.current;
@@ -80,7 +82,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
 
       <div className="mx-auto w-full max-w-6xl md:pr-28 lg:pr-40">
         <p className="hero-tag mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-foreground opacity-0">
-          Available for work
+          {copy.hero.greeting}
         </p>
 
         <h1 className="hero-name mb-3 text-5xl font-bold tracking-tight text-foreground opacity-0 sm:text-7xl">
@@ -88,11 +90,11 @@ export function HeroSection({ hero }: HeroSectionProps) {
         </h1>
 
         <p className="hero-role mb-6 text-xl font-medium text-muted opacity-0 sm:text-2xl">
-          {hero.role}
+          {copy.hero.role || hero.role}
         </p>
 
         <p className="hero-summary mb-10 max-w-2xl text-base leading-7 text-muted opacity-0 sm:text-lg">
-          {hero.summary}
+          {copy.hero.summary || hero.summary}
         </p>
 
         <div className="flex flex-wrap gap-3">
@@ -100,13 +102,13 @@ export function HeroSection({ hero }: HeroSectionProps) {
             href="/projects"
             className="hero-action inline-flex items-center rounded-xl bg-foreground px-5 py-2.5 text-sm font-semibold text-background opacity-0 transition-colors hover:bg-foreground/80"
           >
-            View Projects
+            {copy.hero.viewProjects}
           </Link>
           <Link
             href={`mailto:${hero.contact.email}`}
             className="hero-action inline-flex items-center rounded-xl border border-border-strong px-5 py-2.5 text-sm font-semibold text-foreground opacity-0 transition-colors hover:border-border-focus hover:bg-foreground/5"
           >
-            Get in Touch
+            {copy.hero.getInTouch}
           </Link>
           <Link
             href={hero.contact.linkedin}
@@ -114,7 +116,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
             rel="noopener noreferrer"
             className="hero-action inline-flex items-center rounded-xl border border-border-strong px-5 py-2.5 text-sm font-semibold text-foreground opacity-0 transition-colors hover:border-border-focus hover:bg-foreground/5"
           >
-            LinkedIn ↗
+            {copy.hero.linkedin}
           </Link>
         </div>
 

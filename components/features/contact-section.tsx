@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { SectionTag } from "@/components/ui/section-tag";
+import { useLanguage } from "@/hooks/use-language";
 import type { ContactInfo } from "@/lib/types";
 
 interface ContactSectionProps {
@@ -10,6 +11,8 @@ interface ContactSectionProps {
 }
 
 export function ContactSection({ contact }: ContactSectionProps) {
+  const { copy } = useLanguage();
+
   return (
     <section id="contact" className="scroll-mt-20 px-4 py-20 sm:px-6">
       <div className="mx-auto max-w-6xl">
@@ -20,13 +23,12 @@ export function ContactSection({ contact }: ContactSectionProps) {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <SectionTag label="Contact" />
+            <SectionTag label={copy.contact.tag} />
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Let&apos;s work together
+              {copy.contact.title}
             </h2>
               <p className="mt-4 max-w-lg text-sm leading-7 text-muted">
-              Open to new opportunities. Reach out via email or connect on
-              LinkedIn.
+              {copy.contact.summary}
             </p>
           </motion.div>
 
@@ -49,7 +51,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl border border-border-strong px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-border-focus hover:bg-foreground/5"
             >
-              LinkedIn ↗
+              {copy.contact.linkedin}
             </Link>
           </motion.div>
 

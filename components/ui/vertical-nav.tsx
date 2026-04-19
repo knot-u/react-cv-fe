@@ -2,21 +2,25 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import { animate } from "animejs";
+import { useLanguage } from "@/hooks/use-language";
 
-const SECTIONS = [
-  { id: "hero", label: "Home" },
-  { id: "about", label: "About me!" },
-  { id: "skills", label: "Skills" },
-  { id: "experience", label: "Experience" },
-  { id: "education", label: "Education" },
-  { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact" },
-] as const;
+const SECTION_IDS = ["hero", "about", "skills", "experience", "education", "projects", "contact"] as const;
 
-type SectionId = (typeof SECTIONS)[number]["id"];
+type SectionId = (typeof SECTION_IDS)[number];
 
 export function VerticalNav() {
   const [active, setActive] = useState<SectionId>("hero");
+  const { copy } = useLanguage();
+
+  const sections = [
+    { id: "hero" as const, label: copy.sections.home },
+    { id: "about" as const, label: copy.sections.about },
+    { id: "skills" as const, label: copy.sections.skills },
+    { id: "experience" as const, label: copy.sections.experience },
+    { id: "education" as const, label: copy.sections.education },
+    { id: "projects" as const, label: copy.sections.projects },
+    { id: "contact" as const, label: copy.sections.contact },
+  ];
   const prevActive = useRef<SectionId>("hero");
   const dotRefs = useRef<Partial<Record<SectionId, HTMLSpanElement | null>>>({});
 
@@ -47,7 +51,7 @@ export function VerticalNav() {
       { threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] }
     );
 
-    SECTIONS.forEach(({ id }) => {
+    SECTION_IDS.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
@@ -122,7 +126,7 @@ export function VerticalNav() {
       <div className="absolute left-[5px] top-0 h-full w-px bg-border" />
 
       <ul className="relative flex flex-col gap-6">
-        {SECTIONS.map(({ id, label }) => {
+        {sections.map(({ id, label }) => {
           const isActive = active === id;
           return (
             <li key={id} className="flex items-center">

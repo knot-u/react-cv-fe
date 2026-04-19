@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { SectionTag } from "@/components/ui/section-tag";
+import { useLanguage } from "@/hooks/use-language";
 import type { ExperienceItem } from "@/lib/types";
 
 interface ExperienceSectionProps {
@@ -9,6 +10,8 @@ interface ExperienceSectionProps {
 }
 
 export function ExperienceSection({ experience }: ExperienceSectionProps) {
+  const { copy } = useLanguage();
+
   return (
     <section id="experience" className="scroll-mt-20 px-4 py-20 sm:px-6">
       <div className="mx-auto max-w-6xl">
@@ -19,9 +22,9 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-10"
         >
-          <SectionTag label="Experience" />
+          <SectionTag label={copy.experience.tag} />
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Work history
+            {copy.experience.title}
           </h2>
         </motion.div>
 
@@ -29,7 +32,12 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
           {/* Vertical line */}
           <div className="absolute left-[7px] top-2 hidden h-full w-px bg-border sm:block" />
 
-          {experience.map((item, i) => (
+          {experience.map((item, i) => {
+            const localizedItem = copy.experience.itemsById[item.id];
+            const role = localizedItem?.role ?? item.role;
+            const responsibilities = localizedItem?.responsibilities ?? item.responsibilities;
+
+            return (
             <motion.div
               key={`${item.company}-${item.period}`}
               initial={{ opacity: 0, x: -16 }}
@@ -45,7 +53,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
                 <div className="mb-1 flex flex-wrap items-baseline justify-between gap-2">
                   <div>
                     <span className="font-semibold text-foreground">
-                      {item.role}
+                      {role}
                     </span>
                     <span className="ml-2 text-sm text-muted">
                       @ {item.company}
@@ -55,7 +63,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
                 </div>
 
                 <ul className="mt-3 space-y-1.5">
-                  {item.responsibilities.map((r, j) => (
+                  {responsibilities.map((r, j) => (
                     <li
                       key={j}
                       className="flex gap-2 text-sm leading-6 text-muted"
@@ -67,7 +75,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
                 </ul>
               </div>
             </motion.div>
-          ))}
+          );})}
         </div>
       </div>
     </section>

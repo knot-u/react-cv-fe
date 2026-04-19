@@ -10,6 +10,555 @@
     }
   },
 
+  "localizedContent": {
+    "eng": {
+      "navbar": {
+        "about": "About",
+        "skills": "Skills",
+        "experience": "Experience",
+        "projects": "Projects",
+        "contact": "Contact"
+      },
+      "sections": {
+        "home": "Home",
+        "about": "About me!",
+        "skills": "Skills",
+        "experience": "Experience",
+        "education": "Education",
+        "projects": "Projects",
+        "contact": "Contact"
+      },
+      "hero": {
+        "greeting": "Hi there! Welcome to my portfolio!",
+        "role": "Full Stack Developer",
+        "summary": "Full Stack Developer with experience building end-to-end digital solutions, contributing to both technical development and continuous product improvement. Adaptable to different environments and technologies, focused on delivering results with a strong learning mindset.",
+        "viewProjects": "View Projects",
+        "getInTouch": "Get in Touch",
+        "linkedin": "LinkedIn ↗"
+      },
+      "about": {
+        "tag": "About",
+        "title": "Who I am",
+        "paragraphs": [
+          "Full Stack Developer experienced in building scalable and maintainable software solutions across frontend and backend.",
+          "Strong ability to adapt to new technologies and environments, contributing to product improvement and delivery efficiency.",
+          "Focused on continuous learning and working effectively in dynamic, fast-paced teams."
+        ]
+      },
+      "skills": {
+        "tag": "Skills",
+        "title": "Tech stack",
+        "categories": {
+          "frontend": "Frontend",
+          "backend": "Backend",
+          "devops": "DevOps",
+          "databases": "Databases",
+          "tools": "Tools",
+          "other": "Certifications"
+        }
+      },
+      "experience": {
+        "tag": "Experience",
+        "title": "Work history",
+        "itemsById": {
+          "celerik": {
+            "role": "Full Stack Developer",
+            "responsibilities": [
+              "Developed and maintained RESTful APIs using .NET 7 and Entity Framework Core.",
+              "Designed layered architecture using Repository and Service patterns with SQL Server.",
+              "Built frontend applications with React 18, TypeScript, and Vite.",
+              "Managed state with Redux Toolkit and routing with React Router.",
+              "Developed UI components using Material UI and SCSS.",
+              "Integrated APIs using Axios and handled forms with React Hook Form and Yup.",
+              "Implemented internationalization with i18next and authentication with Azure AD using MSAL.",
+              "Used AG Grid, Storybook, and quality tools such as ESLint and Stylelint."
+            ]
+          },
+          "tuya": {
+            "role": "Full Stack Developer",
+            "responsibilities": [
+              "Developed and maintained REST APIs using .NET and Entity Framework.",
+              "Worked with SQL Server databases and optimized queries.",
+              "Implemented backend logic following clean architecture principles.",
+              "Collaborated in full stack development and system integration."
+            ]
+          },
+          "davivienda": {
+            "role": "Backend Developer",
+            "responsibilities": [
+              "Developed and maintained REST APIs using Java Spring Boot and Express.js.",
+              "Containerized applications using Docker.",
+              "Deployed services using OpenShift.",
+              "Implemented unit testing with Jest and API documentation with Swagger."
+            ]
+          },
+          "algartech-fullstack": {
+            "role": "Full Stack Developer",
+            "responsibilities": [
+              "Developed frontend components using React and Redux.",
+              "Worked with UI libraries such as Material UI, Bootstrap, and Ant Design.",
+              "Built REST APIs using Express.js, NestJS, and Spring Boot.",
+              "Designed SQL and NoSQL database schemas and queries."
+            ]
+          },
+          "algartech-intern": {
+            "role": "Intern",
+            "responsibilities": [
+              "Managed IT procurement orders and operational processes.",
+              "Automated workflows using Python and Visual Basic.",
+              "Built PowerBI dashboards for data analysis.",
+              "Modeled business processes using BPMN."
+            ]
+          },
+          "freelance": {
+            "role": "Full Stack Developer",
+            "responsibilities": [
+              "Developed APIs using Express.js.",
+              "Implemented authentication using JWT and UUID.",
+              "Designed NoSQL schemas with MongoDB.",
+              "Configured CI/CD pipelines using DigitalOcean."
+            ]
+          }
+        }
+      },
+      "education": {
+        "tag": "Education",
+        "title": "Academic background",
+        "itemsById": {
+          "tdea": { "degree": "Software Engineering" },
+          "digital-school": { "degree": "Full Stack Developer Bootcamp" }
+        }
+      },
+      "languagesSection": {
+        "tag": "Languages",
+        "title": "Languages",
+        "levels": {
+          "Native": "Native",
+          "Advanced": "Advanced",
+          "Intermediate": "Intermediate",
+          "Beginner": "Beginner"
+        },
+        "itemsById": {
+          "eng": { "name": "English", "description": "English" },
+          "esp": { "name": "Spanish", "description": "Spanish" },
+          "por": { "name": "Portuguese", "description": "Portuguese" }
+        }
+      },
+      "projects": {
+        "tag": "Projects",
+        "title": "Projects",
+        "previewTitle": "Selected work",
+        "allTitle": "All work",
+        "intro": "A collection of full stack, backend, frontend, and DevOps projects. Scroll to load more.",
+        "viewAll": "View all →",
+        "viewAllProjects": "View all projects →",
+        "allLoaded": "All projects loaded",
+        "loadingAria": "Loading more projects",
+        "github": "GitHub",
+        "live": "Live ↗",
+        "categories": {
+          "backend": "Backend",
+          "frontend": "Frontend",
+          "fullstack": "Full Stack",
+          "devops": "DevOps",
+          "data": "Data"
+        },
+        "itemsById": {
+          "banking-api-system": {
+            "title": "Banking API System",
+            "description": "Scalable backend system for financial operations including transaction processing and account management."
+          },
+          "financial-dashboard": {
+            "title": "Financial Dashboard",
+            "description": "Interactive dashboard for financial analytics and reporting with dynamic data visualization."
+          },
+          "enterprise-web-platform": {
+            "title": "Enterprise Web Platform",
+            "description": "Full stack enterprise application with layered architecture and scalable backend services."
+          },
+          "cicd-pipeline-system": {
+            "title": "CI/CD Pipeline System",
+            "description": "Automated deployment pipeline for applications using containerization and cloud infrastructure."
+          },
+          "analytics-bi-platform": {
+            "title": "Analytics & BI Platform",
+            "description": "Data analysis and visualization platform with dashboards and reporting tools."
+          }
+        }
+      },
+      "contact": {
+        "tag": "Contact",
+        "title": "Let’s work together",
+        "summary": "Open to new opportunities. Reach out via email or connect on LinkedIn.",
+        "linkedin": "LinkedIn ↗"
+      }
+    },
+    "esp": {
+      "navbar": {
+        "about": "Sobre mí",
+        "skills": "Habilidades",
+        "experience": "Experiencia",
+        "projects": "Proyectos",
+        "contact": "Contacto"
+      },
+      "sections": {
+        "home": "Inicio",
+        "about": "¡Sobre mí!",
+        "skills": "Habilidades",
+        "experience": "Experiencia",
+        "education": "Educación",
+        "projects": "Proyectos",
+        "contact": "Contacto"
+      },
+      "hero": {
+        "greeting": "¡Hola! Bienvenido a mi portafolio.",
+        "role": "Desarrollador Full Stack",
+        "summary": "Desarrollador Full Stack con experiencia construyendo soluciones digitales de punta a punta, aportando tanto al desarrollo técnico como a la mejora continua del producto. Me adapto con facilidad a distintos entornos y tecnologías, con enfoque en resultados y aprendizaje constante.",
+        "viewProjects": "Ver proyectos",
+        "getInTouch": "Contáctame",
+        "linkedin": "LinkedIn ↗"
+      },
+      "about": {
+        "tag": "Sobre mí",
+        "title": "Quién soy",
+        "paragraphs": [
+          "Desarrollador Full Stack con experiencia en la construcción de soluciones escalables y mantenibles tanto en frontend como en backend.",
+          "Gran capacidad de adaptación a nuevas tecnologías y entornos, contribuyendo a la mejora del producto y a la eficiencia de entrega.",
+          "Enfocado en el aprendizaje continuo y en colaborar eficazmente en equipos dinámicos y de ritmo acelerado."
+        ]
+      },
+      "skills": {
+        "tag": "Habilidades",
+        "title": "Stack tecnológico",
+        "categories": {
+          "frontend": "Frontend",
+          "backend": "Backend",
+          "devops": "DevOps",
+          "databases": "Bases de datos",
+          "tools": "Herramientas",
+          "other": "Certificaciones"
+        }
+      },
+      "experience": {
+        "tag": "Experiencia",
+        "title": "Trayectoria profesional",
+        "itemsById": {
+          "celerik": {
+            "role": "Desarrollador Full Stack",
+            "responsibilities": [
+              "Desarrollé y mantuve APIs RESTful con .NET 7 y Entity Framework Core.",
+              "Diseñé arquitectura por capas usando patrones Repository y Service con SQL Server.",
+              "Construí aplicaciones frontend con React 18, TypeScript y Vite.",
+              "Gestioné estado con Redux Toolkit y enrutamiento con React Router.",
+              "Desarrollé componentes UI con Material UI y SCSS.",
+              "Integré APIs con Axios y manejé formularios con React Hook Form y Yup.",
+              "Implementé internacionalización con i18next y autenticación con Azure AD usando MSAL.",
+              "Utilicé AG Grid, Storybook y herramientas de calidad como ESLint y Stylelint."
+            ]
+          },
+          "tuya": {
+            "role": "Desarrollador Full Stack",
+            "responsibilities": [
+              "Desarrollé y mantuve APIs REST usando .NET y Entity Framework.",
+              "Trabajé con bases de datos SQL Server y optimicé consultas.",
+              "Implementé lógica backend siguiendo principios de arquitectura limpia.",
+              "Colaboré en desarrollo full stack e integración de sistemas."
+            ]
+          },
+          "davivienda": {
+            "role": "Desarrollador Backend",
+            "responsibilities": [
+              "Desarrollé y mantuve APIs REST con Java Spring Boot y Express.js.",
+              "Contenericé aplicaciones usando Docker.",
+              "Desplegué servicios con OpenShift.",
+              "Implementé pruebas unitarias con Jest y documentación de API con Swagger."
+            ]
+          },
+          "algartech-fullstack": {
+            "role": "Desarrollador Full Stack",
+            "responsibilities": [
+              "Desarrollé componentes frontend con React y Redux.",
+              "Trabajé con librerías UI como Material UI, Bootstrap y Ant Design.",
+              "Construí APIs REST con Express.js, NestJS y Spring Boot.",
+              "Diseñé esquemas y consultas para bases de datos SQL y NoSQL."
+            ]
+          },
+          "algartech-intern": {
+            "role": "Practicante",
+            "responsibilities": [
+              "Gestioné órdenes y procesos de compras TI.",
+              "Automaticé flujos de trabajo con Python y Visual Basic.",
+              "Construí tableros PowerBI para análisis de datos.",
+              "Modelé procesos de negocio usando BPMN."
+            ]
+          },
+          "freelance": {
+            "role": "Desarrollador Full Stack",
+            "responsibilities": [
+              "Desarrollé APIs con Express.js.",
+              "Implementé autenticación con JWT y UUID.",
+              "Diseñé esquemas NoSQL con MongoDB.",
+              "Configuré pipelines CI/CD usando DigitalOcean."
+            ]
+          }
+        }
+      },
+      "education": {
+        "tag": "Educación",
+        "title": "Formación académica",
+        "itemsById": {
+          "tdea": { "degree": "Ingeniería de Software" },
+          "digital-school": { "degree": "Bootcamp de Desarrollador Full Stack" }
+        }
+      },
+      "languagesSection": {
+        "tag": "Idiomas",
+        "title": "Idiomas",
+        "levels": {
+          "Native": "Nativo",
+          "Advanced": "Avanzado",
+          "Intermediate": "Intermedio",
+          "Beginner": "Básico"
+        },
+        "itemsById": {
+          "eng": { "name": "Inglés", "description": "English" },
+          "esp": { "name": "Español", "description": "Español" },
+          "por": { "name": "Portugués", "description": "Português" }
+        }
+      },
+      "projects": {
+        "tag": "Proyectos",
+        "title": "Proyectos",
+        "previewTitle": "Trabajo destacado",
+        "allTitle": "Todos los proyectos",
+        "intro": "Una colección de proyectos full stack, backend, frontend y DevOps. Desplázate para cargar más.",
+        "viewAll": "Ver todos →",
+        "viewAllProjects": "Ver todos los proyectos →",
+        "allLoaded": "Todos los proyectos cargados",
+        "loadingAria": "Cargando más proyectos",
+        "github": "GitHub",
+        "live": "Demo ↗",
+        "categories": {
+          "backend": "Backend",
+          "frontend": "Frontend",
+          "fullstack": "Full Stack",
+          "devops": "DevOps",
+          "data": "Datos"
+        },
+        "itemsById": {
+          "banking-api-system": {
+            "title": "Sistema de APIs bancarias",
+            "description": "Sistema backend escalable para operaciones financieras, incluyendo procesamiento de transacciones y gestión de cuentas."
+          },
+          "financial-dashboard": {
+            "title": "Panel financiero",
+            "description": "Panel interactivo para analítica financiera y reportes con visualización dinámica de datos."
+          },
+          "enterprise-web-platform": {
+            "title": "Plataforma web empresarial",
+            "description": "Aplicación full stack empresarial con arquitectura por capas y servicios backend escalables."
+          },
+          "cicd-pipeline-system": {
+            "title": "Sistema de pipeline CI/CD",
+            "description": "Pipeline automatizado de despliegue para aplicaciones usando contenedores e infraestructura en la nube."
+          },
+          "analytics-bi-platform": {
+            "title": "Plataforma analítica y BI",
+            "description": "Plataforma de análisis y visualización de datos con tableros y herramientas de reporte."
+          }
+        }
+      },
+      "contact": {
+        "tag": "Contacto",
+        "title": "Trabajemos juntos",
+        "summary": "Estoy abierto a nuevas oportunidades. Escríbeme por correo o conecta conmigo en LinkedIn.",
+        "linkedin": "LinkedIn ↗"
+      }
+    },
+    "por": {
+      "navbar": {
+        "about": "Sobre mim",
+        "skills": "Habilidades",
+        "experience": "Experiência",
+        "projects": "Projetos",
+        "contact": "Contato"
+      },
+      "sections": {
+        "home": "Início",
+        "about": "Sobre mim!",
+        "skills": "Habilidades",
+        "experience": "Experiência",
+        "education": "Educação",
+        "projects": "Projetos",
+        "contact": "Contato"
+      },
+      "hero": {
+        "greeting": "Olá! Bem-vindo ao meu portfólio.",
+        "role": "Desenvolvedor Full Stack",
+        "summary": "Desenvolvedor Full Stack com experiência na construção de soluções digitais de ponta a ponta, contribuindo tanto para o desenvolvimento técnico quanto para a melhoria contínua do produto. Adaptável a diferentes ambientes e tecnologias, com foco em resultados e aprendizado constante.",
+        "viewProjects": "Ver projetos",
+        "getInTouch": "Entre em contato",
+        "linkedin": "LinkedIn ↗"
+      },
+      "about": {
+        "tag": "Sobre mim",
+        "title": "Quem sou eu",
+        "paragraphs": [
+          "Desenvolvedor Full Stack com experiência na criação de soluções escaláveis e sustentáveis tanto no frontend quanto no backend.",
+          "Grande capacidade de adaptação a novas tecnologias e ambientes, contribuindo para a melhoria do produto e a eficiência das entregas.",
+          "Focado em aprendizado contínuo e em colaborar bem com equipes dinâmicas e de ritmo acelerado."
+        ]
+      },
+      "skills": {
+        "tag": "Habilidades",
+        "title": "Stack tecnológico",
+        "categories": {
+          "frontend": "Frontend",
+          "backend": "Backend",
+          "devops": "DevOps",
+          "databases": "Bancos de dados",
+          "tools": "Ferramentas",
+          "other": "Certificações"
+        }
+      },
+      "experience": {
+        "tag": "Experiência",
+        "title": "Histórico profissional",
+        "itemsById": {
+          "celerik": {
+            "role": "Desenvolvedor Full Stack",
+            "responsibilities": [
+              "Desenvolvi e mantive APIs RESTful com .NET 7 e Entity Framework Core.",
+              "Desenhei arquitetura em camadas usando padrões Repository e Service com SQL Server.",
+              "Construí aplicações frontend com React 18, TypeScript e Vite.",
+              "Gerenciei estado com Redux Toolkit e roteamento com React Router.",
+              "Desenvolvi componentes UI com Material UI e SCSS.",
+              "Integrei APIs com Axios e trabalhei com formulários usando React Hook Form e Yup.",
+              "Implementei internacionalização com i18next e autenticação com Azure AD usando MSAL.",
+              "Utilizei AG Grid, Storybook e ferramentas de qualidade como ESLint e Stylelint."
+            ]
+          },
+          "tuya": {
+            "role": "Desenvolvedor Full Stack",
+            "responsibilities": [
+              "Desenvolvi e mantive APIs REST usando .NET e Entity Framework.",
+              "Trabalhei com bancos de dados SQL Server e otimizei consultas.",
+              "Implementei lógica de backend seguindo princípios de arquitetura limpa.",
+              "Colaborei no desenvolvimento full stack e na integração de sistemas."
+            ]
+          },
+          "davivienda": {
+            "role": "Desenvolvedor Backend",
+            "responsibilities": [
+              "Desenvolvi e mantive APIs REST com Java Spring Boot e Express.js.",
+              "Containerizei aplicações usando Docker.",
+              "Implantei serviços com OpenShift.",
+              "Implementei testes unitários com Jest e documentação de API com Swagger."
+            ]
+          },
+          "algartech-fullstack": {
+            "role": "Desenvolvedor Full Stack",
+            "responsibilities": [
+              "Desenvolvi componentes frontend com React e Redux.",
+              "Trabalhei com bibliotecas UI como Material UI, Bootstrap e Ant Design.",
+              "Construí APIs REST com Express.js, NestJS e Spring Boot.",
+              "Modelei esquemas e consultas para bancos de dados SQL e NoSQL."
+            ]
+          },
+          "algartech-intern": {
+            "role": "Estagiário",
+            "responsibilities": [
+              "Gerenciei pedidos e processos de compras de TI.",
+              "Automatizei fluxos de trabalho com Python e Visual Basic.",
+              "Criei dashboards no PowerBI para análise de dados.",
+              "Modelei processos de negócio usando BPMN."
+            ]
+          },
+          "freelance": {
+            "role": "Desenvolvedor Full Stack",
+            "responsibilities": [
+              "Desenvolvi APIs com Express.js.",
+              "Implementei autenticação com JWT e UUID.",
+              "Desenhei esquemas NoSQL com MongoDB.",
+              "Configurei pipelines de CI/CD usando DigitalOcean."
+            ]
+          }
+        }
+      },
+      "education": {
+        "tag": "Educação",
+        "title": "Formação acadêmica",
+        "itemsById": {
+          "tdea": { "degree": "Engenharia de Software" },
+          "digital-school": { "degree": "Bootcamp de Desenvolvedor Full Stack" }
+        }
+      },
+      "languagesSection": {
+        "tag": "Idiomas",
+        "title": "Idiomas",
+        "levels": {
+          "Native": "Nativo",
+          "Advanced": "Avançado",
+          "Intermediate": "Intermediário",
+          "Beginner": "Básico"
+        },
+        "itemsById": {
+          "eng": { "name": "Inglês", "description": "English" },
+          "esp": { "name": "Espanhol", "description": "Español" },
+          "por": { "name": "Português", "description": "Português" }
+        }
+      },
+      "projects": {
+        "tag": "Projetos",
+        "title": "Projetos",
+        "previewTitle": "Trabalhos em destaque",
+        "allTitle": "Todos os projetos",
+        "intro": "Uma coleção de projetos full stack, backend, frontend e DevOps. Role para carregar mais.",
+        "viewAll": "Ver todos →",
+        "viewAllProjects": "Ver todos os projetos →",
+        "allLoaded": "Todos os projetos carregados",
+        "loadingAria": "Carregando mais projetos",
+        "github": "GitHub",
+        "live": "Ao vivo ↗",
+        "categories": {
+          "backend": "Backend",
+          "frontend": "Frontend",
+          "fullstack": "Full Stack",
+          "devops": "DevOps",
+          "data": "Dados"
+        },
+        "itemsById": {
+          "banking-api-system": {
+            "title": "Sistema de APIs bancárias",
+            "description": "Sistema backend escalável para operações financeiras, incluindo processamento de transações e gestão de contas."
+          },
+          "financial-dashboard": {
+            "title": "Dashboard financeiro",
+            "description": "Dashboard interativo para análises e relatórios financeiros com visualização dinâmica de dados."
+          },
+          "enterprise-web-platform": {
+            "title": "Plataforma web empresarial",
+            "description": "Aplicação empresarial full stack com arquitetura em camadas e serviços backend escaláveis."
+          },
+          "cicd-pipeline-system": {
+            "title": "Sistema de pipeline CI/CD",
+            "description": "Pipeline automatizado de deploy para aplicações usando conteinerização e infraestrutura em nuvem."
+          },
+          "analytics-bi-platform": {
+            "title": "Plataforma de analytics e BI",
+            "description": "Plataforma de análise e visualização de dados com dashboards e ferramentas de relatório."
+          }
+        }
+      },
+      "contact": {
+        "tag": "Contato",
+        "title": "Vamos trabalhar juntos",
+        "summary": "Estou aberto a novas oportunidades. Entre em contato por e-mail ou conecte-se comigo no LinkedIn.",
+        "linkedin": "LinkedIn ↗"
+      }
+    }
+  },
+
   "about": {
     "paragraphs": [
       "Full Stack Developer experienced in building scalable and maintainable software solutions across frontend and backend.",
@@ -57,6 +606,7 @@
 
   "experience": [
     {
+      "id": "celerik",
       "company": "Celerik Inc",
       "role": "Full Stack Developer",
       "period": "Aug 2024 - Apr 2026",
@@ -72,6 +622,7 @@
       ]
     },
     {
+      "id": "tuya",
       "company": "Compañía de financiamiento Tuya S.A",
       "role": "Full Stack Developer",
       "period": "Jul 2023 - Jul 2024",
@@ -83,6 +634,7 @@
       ]
     },
     {
+      "id": "davivienda",
       "company": "Davivienda",
       "role": "Backend Developer",
       "period": "Aug 2022 - Nov 2023",
@@ -94,6 +646,7 @@
       ]
     },
     {
+      "id": "algartech-fullstack",
       "company": "AlgarTech SAS",
       "role": "Full Stack Developer",
       "period": "Jan 2022 - Jul 2022",
@@ -105,6 +658,7 @@
       ]
     },
     {
+      "id": "algartech-intern",
       "company": "AlgarTech SAS",
       "role": "Intern",
       "period": "Jun 2021 - Jan 2022",
@@ -116,6 +670,7 @@
       ]
     },
     {
+      "id": "freelance",
       "company": "Freelance",
       "role": "Full Stack Developer",
       "period": "2021 - Present",
@@ -130,11 +685,13 @@
 
   "education": [
     {
+      "id": "tdea",
       "institution": "Tecnológico de Antioquia",
       "degree": "Software Engineering",
       "period": "Jan 2019 - Aug 2024"
     },
     {
+      "id": "digital-school",
       "institution": "Digital School CO",
       "degree": "Full Stack Developer Bootcamp",
       "period": "Aug 2021 - Jan 2022"
@@ -143,21 +700,31 @@
 
   "languages": [
     {
-      "name": "Spanish",
-      "level": "Native"
-    },
-    {
+      "id": "eng",
       "name": "English",
-      "level": "Advanced"
+      "level": "Advanced",
+      "abbreviation": "ENG",
+      "description": "English"
     },
     {
+      "id": "esp",
+      "name": "Spanish",
+      "level": "Native",
+      "abbreviation": "ESP",
+      "description": "Español"
+    },
+    {
+      "id": "por",
       "name": "Portuguese",
-      "level": "Intermediate"
+      "level": "Intermediate",
+      "abbreviation": "POR",
+      "description": "Português"
     }
   ],
 
   "projects": [
     {
+      "id": "banking-api-system",
       "title": "Banking API System",
       "description": "Scalable backend system for financial operations including transaction processing and account management.",
       "techStack": ["Spring Boot", "Express.js", "Docker"],
@@ -167,6 +734,7 @@
       "liveUrl": "#"
     },
     {
+      "id": "financial-dashboard",
       "title": "Financial Dashboard",
       "description": "Interactive dashboard for financial analytics and reporting with dynamic data visualization.",
       "techStack": ["React", "Redux", "Material UI"],
@@ -176,6 +744,7 @@
       "liveUrl": "#"
     },
     {
+      "id": "enterprise-web-platform",
       "title": "Enterprise Web Platform",
       "description": "Full stack enterprise application with layered architecture and scalable backend services.",
       "techStack": [".NET", "SQL Server", "React"],
@@ -185,6 +754,7 @@
       "liveUrl": "#"
     },
     {
+      "id": "cicd-pipeline-system",
       "title": "CI/CD Pipeline System",
       "description": "Automated deployment pipeline for applications using containerization and cloud infrastructure.",
       "techStack": ["Docker", "Azure DevOps", "Terraform"],
@@ -194,6 +764,7 @@
       "liveUrl": "#"
     },
     {
+      "id": "analytics-bi-platform",
       "title": "Analytics & BI Platform",
       "description": "Data analysis and visualization platform with dashboards and reporting tools.",
       "techStack": ["PowerBI", "Python", "SQL"],

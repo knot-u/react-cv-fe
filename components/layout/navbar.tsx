@@ -4,32 +4,37 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const NAV_LINKS = [
-  { label: "About", href: "/#about" },
-  { label: "Skills", href: "/#skills" },
-  { label: "Experience", href: "/#experience" },
-  { label: "Projects", href: "/projects" },
-  { label: "Contact", href: "/#contact" },
-];
+import { useLanguage } from "@/hooks/use-language";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
 
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { copy } = useLanguage();
+
+  const navLinks = [
+    { label: copy.navbar.about, href: "/#about" },
+    { label: copy.navbar.skills, href: "/#skills" },
+    { label: copy.navbar.experience, href: "/#experience" },
+    { label: copy.navbar.projects, href: "/projects" },
+    { label: copy.navbar.contact, href: "/#contact" },
+  ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-6">
+        <LanguageSwitcher />
+
         <Link
           href="/"
-          className="text-sm font-semibold tracking-tight text-foreground hover:text-muted transition-colors"
+          className="mr-auto text-sm font-semibold tracking-tight text-foreground transition-colors hover:text-muted"
         >
           Santiago Cardona
         </Link>
 
         {/* Desktop nav */}
         <nav className="hidden gap-6 sm:flex">
-          {NAV_LINKS.map((link) => {
+          {navLinks.map((link) => {
             const isActive =
               link.href === "/projects" && pathname === "/projects";
             return (
@@ -77,7 +82,7 @@ export function Navbar() {
             className="overflow-hidden border-t border-border sm:hidden"
           >
             <ul className="flex flex-col px-4 py-2">
-              {NAV_LINKS.map((link) => (
+              {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

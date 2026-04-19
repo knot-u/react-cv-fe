@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ProjectCard } from "@/components/ui/project-card";
+import { useLanguage } from "@/hooks/use-language";
 import type { Project } from "@/lib/types";
 
 const PAGE_SIZE = 4;
@@ -17,6 +18,7 @@ export function ProjectsClient({
   allProjects,
 }: ProjectsClientProps) {
   const [visible, setVisible] = useState<Project[]>(initialProjects);
+  const { copy } = useLanguage();
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(
     initialProjects.length < allProjects.length
@@ -81,7 +83,7 @@ export function ProjectsClient({
       {/* Sentinel + state indicators */}
       <div ref={sentinelRef} className="mt-8 flex justify-center">
         {loading && (
-          <div className="flex gap-1.5" aria-label="Loading more projects">
+          <div className="flex gap-1.5" aria-label={copy.projects.loadingAria}>
             {[0, 1, 2].map((i) => (
               <motion.span
                 key={i}
@@ -93,7 +95,7 @@ export function ProjectsClient({
           </div>
         )}
         {!hasMore && !loading && visible.length > 0 && (
-          <p className="text-xs text-subtle">All projects loaded</p>
+          <p className="text-xs text-subtle">{copy.projects.allLoaded}</p>
         )}
       </div>
     </div>
