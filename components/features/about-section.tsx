@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { SectionTag } from "@/components/ui/section-tag";
+import { useLanguage } from "@/hooks/use-language";
 import type { AboutData } from "@/lib/types";
 
 interface AboutSectionProps {
@@ -9,6 +10,9 @@ interface AboutSectionProps {
 }
 
 export function AboutSection({ about }: AboutSectionProps) {
+  const { copy } = useLanguage();
+  const paragraphs = copy.about.paragraphs?.length ? copy.about.paragraphs : about.paragraphs;
+
   return (
     <section id="about" className="scroll-mt-20 px-4 py-20 sm:px-6">
       <div className="mx-auto max-w-6xl">
@@ -19,14 +23,14 @@ export function AboutSection({ about }: AboutSectionProps) {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <SectionTag label="About" />
+            <SectionTag label={copy.about.tag} />
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Who I am
+              {copy.about.title}
             </h2>
           </motion.div>
 
           <div className="mt-8 grid gap-5 sm:grid-cols-3">
-            {about.paragraphs.map((paragraph, i) => (
+            {paragraphs.map((paragraph, i) => (
               <motion.p
                 key={i}
                 initial={{ opacity: 0, y: 16 }}
