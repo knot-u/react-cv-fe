@@ -55,10 +55,10 @@ const HALF        = CANVAS / 2;      // centre = (HALF, HALF)
 const COLOR_BOOST = 5;              // color reaches its target earlier in the scroll
 const SMOOTHING   = 0.3;            // scroll easing factor for smoother motion
 const X1_LAG_MS   = 500;            // x1 trails x2 with a soft delay
-const IDLE_SPIN_RPS = 0.001;         // constant subtle spin, in revolutions per second
-const COLOR_CYCLE_MS = 10;        // slow palette drift duration
-const OUTER_RING_OFFSETS = [100, 20, 30] as const;
-const SECOND_RING_OFFSETS = [1, 10] as const;
+const IDLE_SPIN_RPS = 0.004;         // constant subtle spin, in revolutions per second
+const COLOR_CYCLE_MS = 10000;            // slow palette drift duration
+const OUTER_RING_OFFSETS = [100, 20, 30, 400] as const;
+const SECOND_RING_OFFSETS = [1, 10, 50] as const;
 
 type ClockerNavProps = { targetRef: RefObject<HTMLElement | null> };
 
@@ -76,6 +76,7 @@ const lerpRgb = (
   `rgb(${Math.round(lerp(from[0], to[0], t))},${Math.round(lerp(from[1], to[1], t))},${Math.round(lerp(from[2], to[2], t))})`;
 
 const paletteAt = (index: number): [number, number, number] => {
+
   const wrapped = ((index % N) + N) % N;
   const base = Math.floor(wrapped);
   const next = (base + 1) % N;
@@ -134,7 +135,7 @@ export function ClockerNav({ targetRef }: ClockerNavProps) {
       const rect   = target.getBoundingClientRect();
       const vh     = window.innerHeight || 1;
       const travel = Math.max(rect.height - vh * 0.2, 1);
-      return Math.min(Math.max((-rect.top + vh * 0.1) / travel, 0), 1);
+      return Math.min(Math.max((-rect.top + vh * 0.1) / travel * 0.3, 0), 1);
     };
 
     /* ── render loop ────────────────────────────────────────── */
