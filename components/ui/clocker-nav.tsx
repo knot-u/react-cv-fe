@@ -53,8 +53,8 @@ const INNER_R     = 10;              // small inner orbit for the trailing x1 po
 const CANVAS      = 620;             // larger SVG viewport
 const HALF        = CANVAS / 2;      // centre = (HALF, HALF)
 const COLOR_BOOST = 5;              // color reaches its target earlier in the scroll
-const SMOOTHING   = 0.14;            // scroll easing factor for smoother motion
-const X1_LAG_MS   = 1000;            // x1 trails x2 with a soft delay
+const SMOOTHING   = 0.2;            // scroll easing factor for smoother motion
+const X1_LAG_MS   = 500;            // x1 trails x2 with a soft delay
 const IDLE_SPIN_RPS = 0.005;         // constant subtle spin, in revolutions per second
 const COLOR_CYCLE_MS = 14000;        // slow palette drift duration
 
