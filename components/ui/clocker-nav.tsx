@@ -53,10 +53,12 @@ const INNER_R     = 10;              // small inner orbit for the trailing x1 po
 const CANVAS      = 620;             // larger SVG viewport
 const HALF        = CANVAS / 2;      // centre = (HALF, HALF)
 const COLOR_BOOST = 5;              // color reaches its target earlier in the scroll
-const SMOOTHING   = 0.2;            // scroll easing factor for smoother motion
+const SMOOTHING   = 0.3;            // scroll easing factor for smoother motion
 const X1_LAG_MS   = 500;            // x1 trails x2 with a soft delay
-const IDLE_SPIN_RPS = 0.005;         // constant subtle spin, in revolutions per second
-const COLOR_CYCLE_MS = 14000;        // slow palette drift duration
+const IDLE_SPIN_RPS = 0.001;         // constant subtle spin, in revolutions per second
+const COLOR_CYCLE_MS = 10;        // slow palette drift duration
+const OUTER_RING_OFFSETS = [100, 20, 30] as const;
+const SECOND_RING_OFFSETS = [1, 10] as const;
 
 type ClockerNavProps = { targetRef: RefObject<HTMLElement | null> };
 
@@ -219,6 +221,9 @@ export function ClockerNav({ targetRef }: ClockerNavProps) {
 
   /* ── SVG render ───────────────────────────────────────────── */
   const visibleWidth = diameter / 2;
+  const viewScale = CANVAS / diameter;
+  const outerRingRadii = OUTER_RING_OFFSETS.map((offset) => Math.max(diameter / 2 - offset, 2) * viewScale);
+  const secondRingRadii = SECOND_RING_OFFSETS.map((offset) => Math.max(diameter / 2 - offset, 2) * viewScale);
 
   return (
     <div
@@ -237,6 +242,30 @@ export function ClockerNav({ targetRef }: ClockerNavProps) {
           viewBox={`0 0 ${CANVAS} ${CANVAS}`}
           className="block h-full w-full"
         >
+        {outerRingRadii.map((radius, index) => (
+          <circle
+            key={`outer-ring-${index}`}
+            cx={HALF}
+            cy={HALF}
+            r={radius}
+            fill="none"
+            stroke="rgba(10, 10, 10, 0.36)"
+            strokeWidth={1.25}
+          />
+        ))}
+
+        {secondRingRadii.map((radius, index) => (
+          <circle
+            key={`second-ring-${index}`}
+            cx={HALF}
+            cy={HALF}
+            r={radius}
+            fill="none"
+            stroke="rgba(17, 24, 39, 0.7)"
+            strokeWidth={1.15}
+          />
+        ))}
+
         {/*
           Seq(Segment((0,0), (r·cos(t+r1), r·sin(t+r1))), t, 0, 2π, 2π/N)
           Initial state: r1 = 0, r = R0 for all spokes
