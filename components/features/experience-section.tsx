@@ -13,7 +13,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
   const { copy } = useLanguage();
 
   return (
-    <section id="experience" className="scroll-mt-20 px-4 py-20 sm:px-6">
+    <section id="work" className="scroll-mt-20 px-4 py-20 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

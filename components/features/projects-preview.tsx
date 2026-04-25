@@ -16,7 +16,7 @@ export function ProjectsPreview({ projects }: ProjectsPreviewProps) {
   const { copy } = useLanguage();
 
   return (
-    <section id="projects" className="scroll-mt-20 px-4 py-20 sm:px-6">
+    <section id="playground" className="scroll-mt-20 px-4 py-20 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
