@@ -81,18 +81,6 @@ export function HeroSection({ hero }: HeroSectionProps) {
       />
 
       <div className="mx-auto w-full max-w-6xl md:pr-28 lg:pr-40">
-        <p className="hero-tag mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-foreground opacity-0">
-          {copy.hero.greeting}
-        </p>
-
-        <h1 className="hero-name mb-3 text-5xl font-bold tracking-tight text-foreground opacity-0 sm:text-7xl">
-          {hero.name}
-        </h1>
-
-        <p className="hero-role mb-6 text-xl font-medium text-muted opacity-0 sm:text-2xl">
-          {copy.hero.role || hero.role}
-        </p>
-
         <p className="hero-summary mb-10 max-w-2xl text-base leading-7 text-muted opacity-0 sm:text-lg">
           {copy.hero.summary || hero.summary}
         </p>

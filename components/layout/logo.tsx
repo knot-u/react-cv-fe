@@ -8,15 +8,15 @@ export function Logo() {
     <Link
       href="/"
       aria-label="Home"
-      className="fixed left-4 top-4 z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+      className="fixed left-0 top-0 z-25 sm:w-60"
     >
       <Image
-        src="/logo.svg"
+        src="/colored_logo.svg"
         alt="Logo"
         width={192}
         height={160}
         priority
-        className="h-[20vh] w-auto"
+        className="block h-auto w-full"
       />
     </Link>
   );

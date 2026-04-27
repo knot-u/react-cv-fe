@@ -1,4 +1,3 @@
-import { Logo } from "@/components/layout/logo";
 import { FloatingNav } from "@/components/layout/floating-nav";
 import { HeroSection } from "@/components/features/hero-section";
 import { AboutSection } from "@/components/features/about-section";
@@ -13,7 +12,6 @@ export default async function HomePage() {
 
   return (
     <>
-      <Logo />
       <FloatingNav />
       <main>
         <HeroSection hero={data.hero} />
